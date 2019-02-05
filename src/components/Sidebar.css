@@ -1,0 +1,17 @@
+#sidebar{
+    position: absolute;
+    background-color: #272727;
+    width: 200px;
+    bottom: 0px;
+    top: 0px;
+    left: -150px;
+    transition: all .2s ease-out;
+    z-index: 200;
+}
+#sidebar:hover{
+    transform: translateX(150px)
+}
+
+#sidebar .list-group-item{
+    background: none;
+}
