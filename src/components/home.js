@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./Home.css"
+import Game from "./Game"
 
 
 class Home extends Component {
@@ -7,31 +9,28 @@ class Home extends Component {
     this.state = {
       games: [],
       isLoaded: false,
-      
     };
   }
 
   componentDidMount() {
-    
-    fetch("https://api-v3.igdb.com/games",{
-      method: 'POST',
-      headers:{
-        "user-key": "0e2efbeed8b9812ae1c232d6d5a7ddff",
-        "accept": "application/json"
-      }
-    }).then(response => response.text())
-    .then(text => console.log(text));
-
+    fetch("https://api.rawg.io/api/games",{
+      method: 'GET'
+    }).then(response => response.json())
+    .then(res => res = this.setState({games: res.results,isLoaded: true}));
   }
 
   render() {
-    return (
-      <div id="home" className="container">
-        <div>
-          <h4>Data Has been Loaded</h4>
+    if (!this.state.isLoaded) {
+      return(<div className="spinner-1"></div>)
+    }else{
+      return (
+        <div className="d-flex flex-wrap justify-content-around">
+          {
+            this.state.games.map((game)=>(<Game key={game.id} game={game}/>))
+          }
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
