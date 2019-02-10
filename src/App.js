@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import GameDetails from "./components/GameDetails";
 import NotFound from "./components/Notfound";
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
               <div id="content">
                 <Switch>
                   <Route path="/" component={Home} exact />
+                  <Route path="/gameDetails/:gameId" name="gameId" component={GameDetails} />
                   <Route path="/profile" component = {Profile} />
                   <Route component = {NotFound} />
                 </Switch>

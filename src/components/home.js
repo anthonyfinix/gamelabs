@@ -16,7 +16,7 @@ class Home extends Component {
     fetch("https://api.rawg.io/api/games",{
       method: 'GET'
     }).then(response => response.json())
-    .then(res => res = this.setState({games: res.results,isLoaded: true}));
+    .then(res => this.setState({games: res.results,isLoaded: true}));
   }
 
   render() {
@@ -24,9 +24,9 @@ class Home extends Component {
       return(<div className="spinner-1"></div>)
     }else{
       return (
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex flex-wrap justify-content-around p-1">
           {
-            this.state.games.map((game)=>(<Game key={game.id} game={game}/>))
+            this.state.games.map((game, index)=>(<Game key={game.id} animDelay={index} game={game}/>))
           }
         </div>
       );
