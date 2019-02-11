@@ -23,8 +23,9 @@ class Home extends Component {
     if (!this.state.isLoaded) {
       return(<div className="spinner-1"></div>)
     }else{
+      console.log(this.state.games[6])
       return (
-        <div className="d-flex flex-wrap justify-content-around p-1">
+        <div className="d-flex flex-wrap justify-content-around p-1 pt-3">
           {
             this.state.games.map((game, index)=>(<Game key={game.id} animDelay={index} game={game}/>))
           }

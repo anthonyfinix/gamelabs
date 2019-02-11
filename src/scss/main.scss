@@ -1,3 +1,15 @@
+a{
+    text-decoration: none;
+    color: #fff !important;
+    &:hover{
+    text-decoration: none !important;
+        color: #fff !important;
+    }
+}
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+
 $body-bg: #212121;
 $body-color: #D5D5D5;
 
