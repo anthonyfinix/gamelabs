@@ -23,7 +23,7 @@ class Home extends Component {
     if (!this.state.isLoaded) {
       return(<div className="spinner-1"></div>)
     }else{
-      console.log(this.state.games[6])
+      console.log(this.state.games[9])
       return (
         <div className="d-flex flex-wrap justify-content-around p-1 pt-3">
           {
