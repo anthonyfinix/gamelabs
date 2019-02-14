@@ -6,24 +6,19 @@ class Game extends Component {
   render() {
 
     const game = {
+      position: 'relative',
       width: 200,
       height: 300,
-      transition: 'all .2s ease-out',
-      position: 'relative'
-    }
-    const platform = {
-      position: 'absolute',
-      bottom: '1rem'
     }
 
     return (
       <Link to={"/gameDetails/"+this.props.id} >
-        <div style={game} className="card text-white mb-3  pb-5 rounded-0 bg-primary">
+        <div style={game} className="card text-white mb-3 pb-5 rounded-0 bg-primary text-left">
           <img src={""+this.props.background_image} style={{height: 120}} className="card-img rounded-0" alt={""+this.props.slug}></img>
           <div className="card-body p-2">
             <p className="mt-2 mb-1 pl-2">{this.props.name}</p>
             <div className="rating d-flex jsutify-content-around my-1 pl-2 mb-2">{this.getRating()}</div>
-            <div style={platform} className="d-flex flex-wrap jsutify-content-around pl-2" style={{opacity:0.2}}>{this.getPlatform()}</div>
+            <div className="d-flex flex-wrap jsutify-content-around pl-2" style={{opacity:0.2}}>{this.getPlatform()}</div>
           </div>
         </div>
       </Link>
