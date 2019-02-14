@@ -12,17 +12,7 @@ class gameDetails extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.rawg.io/api/games/"+this.state.gameId,{
-      method: 'GET'
-    }).then(response => response.json())
-    .then(res => {
-      this.setState({
-        gameDetails:res,
-        isLoaded: true
-      });
-      console.log(this.state.gameDetails)
-    });
-    
+    this.getSingleGame()
   }
   
   render() {
@@ -40,6 +30,19 @@ class gameDetails extends Component {
         </div>
       );
     }
+  }
+
+  getSingleGame = ()=>{
+    fetch("https://api.rawg.io/api/games/"+this.state.gameId,{
+      method: 'GET'
+    }).then(response => response.json())
+    .then(res => {
+      this.setState({
+        gameDetails:res,
+        isLoaded: true
+      });
+      console.log(this.state.gameDetails)
+    });
   }
 }
 

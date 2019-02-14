@@ -1,19 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "./Game.css"
-
 class Game extends Component {
-  
+
   render() {
+
+    const game = {
+      width: 200,
+      height: 300,
+      transition: 'all .2s ease-out',
+      position: 'relative'
+    }
+    const platform = {
+      position: 'absolute',
+      bottom: '1rem'
+    }
+
     return (
-      <Link to={"/gameDetails/"+this.props.game.id} >
-        <div className="game card text-white mb-3  pb-5 rounded-0 bg-primary">
-          <img src={""+this.props.game.background_image} style={{height: 120}} className="card-img rounded-0" alt={""+this.props.game.slug}></img>
+      <Link to={"/gameDetails/"+this.props.id} >
+        <div style={game} className="card text-white mb-3  pb-5 rounded-0 bg-primary">
+          <img src={""+this.props.background_image} style={{height: 120}} className="card-img rounded-0" alt={""+this.props.slug}></img>
           <div className="card-body p-2">
-            <p className="mt-2 mb-1 pl-2">{this.props.game.name}</p>
+            <p className="mt-2 mb-1 pl-2">{this.props.name}</p>
             <div className="rating d-flex jsutify-content-around my-1 pl-2 mb-2">{this.getRating()}</div>
-            <div className="platform d-flex flex-wrap jsutify-content-around pl-2" style={{opacity:0.2}}>{this.getPlatform()}</div>
+            <div style={platform} className="d-flex flex-wrap jsutify-content-around pl-2" style={{opacity:0.2}}>{this.getPlatform()}</div>
           </div>
         </div>
       </Link>
@@ -22,7 +32,7 @@ class Game extends Component {
 
   getRating(){
     let ratings = []
-    for(let i=0;i < Math.round(this.props.game.rating);i++){
+    for(let i=0;i < Math.round(this.props.rating);i++){
       ratings.push(<i key={i} style={{color:'yellow'}} className="fas fa-star fa-xs mr-1"></i>)
     }
     return ratings
@@ -30,7 +40,7 @@ class Game extends Component {
 
   getPlatform(){
     let platforms = []
-    this.props.game.parent_platforms.forEach((element, i) => {
+    this.props.parent_platforms.forEach((element, i) => {
       if (element.platform.slug === 'pc') {
         platforms.push(<i key={i} className="fas fa-desktop fa-sm mr-3 my-2"></i>)
       }else if (element.platform.slug === 'playstation') {
