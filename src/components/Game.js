@@ -7,13 +7,12 @@ class Game extends Component {
 
     const game = {
       position: 'relative',
-      width: 200,
       height: 300,
     }
 
     return (
-      <Link to={"/gameDetails/"+this.props.id} >
-        <div style={game} className="card text-white mb-3 pb-5 rounded-0 bg-primary text-left">
+      <Link className="col-2 px-0" to={"/gameDetails/"+this.props.id} >
+        <div style={game} className="text-white pb-5 rounded-0 bg-primary text-left mx-0">
           <img src={""+this.props.background_image} style={{height: 120}} className="card-img rounded-0" alt={""+this.props.slug}></img>
           <div className="card-body p-2">
             <p className="mt-2 mb-1 pl-2">{this.props.name}</p>

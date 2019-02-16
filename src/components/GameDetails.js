@@ -35,7 +35,9 @@ class gameDetails extends Component {
           <div className="d-flex justify-content-between container-fluid">
             <div className="p-4">
               <p className="font-weight-bold">Developers</p>
-              <div className="d-flex mb-5">{this.getDevelopers()}</div>
+              <div className="d-flex mb-3">{this.getDevelopers()}</div>
+              <p className="font-weight-bold">publisher</p>
+              <div className="d-flex mb-3">{this.getPublisher()}</div>
               <p className="font-weight-bold">Description</p>
               {this.state.gameDetails.description_raw}
             </div>
@@ -59,7 +61,10 @@ class gameDetails extends Component {
 
   getSingleGame = ()=>{
     fetch("https://api.rawg.io/api/games/"+this.state.gameId,{
-      method: 'GET'
+      method: 'GET',
+      header: {
+        'user-agent': 'gamelabz/1.1'
+      }
     }).then(response => response.json())
     .then(res => {
       this.setState({
@@ -92,6 +97,14 @@ class gameDetails extends Component {
       developer.push(<p className="developers shadow" key={index}><img src={element.image_background} alt={element.slug}></img>{element.name}</p>)
     });
     return developer
+  }
+
+  getPublisher(){
+    let publisher = []
+    this.state.gameDetails.publishers.forEach((element,index) => {
+      publisher.push(<p className="developers shadow" key={index}><img src={element.image_background} alt={element.slug}></img>{element.name}</p>)
+    });
+    return publisher
   }
 }
 

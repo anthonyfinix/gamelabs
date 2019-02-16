@@ -19,7 +19,10 @@ class Home extends Component {
   
   loadGames=()=>{
     fetch("https://api.rawg.io/api/games?page="+this.state.currPage,{
-      method: 'GET'
+      method: 'GET',
+      header: {
+        'user-agent': 'gamelabz/1.1'
+      }
     }).then(response => response.json())
     .then(res => {
       this.setState({
@@ -43,7 +46,7 @@ class Home extends Component {
     }else{
       return (
         <div className="HomeWrapper p-1 pt-3 text-center">
-        <div className=" d-flex flex-wrap justify-content-around">
+        <div className="row mx-0">
           {
             this.state.games.map((game, index,)=>(<Game key={game.id} animDelay={index} {...game}/>))
           }
