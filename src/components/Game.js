@@ -25,7 +25,7 @@ class Game extends Component {
     );
   }
 
-  getRating(){
+  getRating = ()=>{
     let ratings = []
     for(let i=0;i < Math.round(this.props.rating);i++){
       ratings.push(<i key={i} style={{color:'yellow'}} className="fas fa-star fa-xs mr-1"></i>)
@@ -33,7 +33,7 @@ class Game extends Component {
     return ratings
   }
 
-  getPlatform(){
+  getPlatform = ()=>{
     let platforms = []
     this.props.parent_platforms.forEach((element, i) => {
       if (element.platform.slug === 'pc') {

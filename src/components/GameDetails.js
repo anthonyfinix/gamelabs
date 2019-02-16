@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
+import './gameDetails.css'
 class gameDetails extends Component {
 
   constructor(props){
     super(props)
     this.state = {
       gameId :this.props.match.params.gameId,
-      gameDetails: {},
+      gameDetails: '',
       isLoaded: false
     }
   }
@@ -14,18 +14,43 @@ class gameDetails extends Component {
   componentDidMount() {
     this.getSingleGame()
   }
-  
   render() {
+    const header={
+      backgroundImage: "url('"+this.state.gameDetails.background_image+"')",
+      backgroundSize: "cover",
+      backgroundAttachment: "fixed",
+      height:300,
+      fibackgroundColor:'linear-gradient(#e66465, #9198e5)',
+      position: 'relative'
+    }
+
     if (!this.state.isLoaded) {
       return(<div className="spinner-1"></div>)
     }else{
       return(
-        <div>
-          <div className="container my-5 d-flex justify-content-between">
-            <h5>{this.state.gameDetails.name}</h5>
+        <div >
+          <div style={header} className="header">
+            <h3>{this.state.gameDetails.name}</h3>
           </div>
-          <div className="container my-5">
-            <h5>{this.state.gameDetails.description_raw}</h5>
+          <div className="d-flex justify-content-between container-fluid">
+            <div className="p-4">
+              <p className="font-weight-bold">Developers</p>
+              <div className="d-flex mb-5">{this.getDevelopers()}</div>
+              <p className="font-weight-bold">Description</p>
+              {this.state.gameDetails.description_raw}
+            </div>
+            <div className="sideBar col-3 pt-4">
+              <div className="d-flex align-items-start">
+                <i className="material-icons mr-3">games</i>
+                <p className="font-weight-bold mb-1">Category</p>
+              </div>
+                <ul>{this.getCategories()}</ul>
+              <div className="d-flex align-items-start">
+                <i className="far fa-futbol fa-lg mt-1 mr-3"></i>
+                <p className="font-weight-bold mb-1">Platform</p>
+              </div>
+                <ul>{this.getPlatforms()}</ul>
+            </div>
           </div>
         </div>
       );
@@ -43,6 +68,30 @@ class gameDetails extends Component {
       });
       console.log(this.state.gameDetails)
     });
+  }
+
+  getCategories(){
+    let categories = []
+    this.state.gameDetails.categories.forEach((element,index) => {
+      categories.push(<li key={index}>{element.name}</li>)
+    });
+    return categories
+  }
+
+  getPlatforms(){
+    let platforms = []
+    this.state.gameDetails.platforms.forEach((element,index) => {
+      platforms.push(<li key={index}>{element.platform.name}</li>)
+    });
+    return platforms
+  }
+
+  getDevelopers(){
+    let developer = []
+    this.state.gameDetails.developers.forEach((element,index) => {
+      developer.push(<p className="developers shadow" key={index}><img src={element.image_background} alt={element.slug}></img>{element.name}</p>)
+    });
+    return developer
   }
 }
 

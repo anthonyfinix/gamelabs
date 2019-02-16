@@ -1,0 +1,34 @@
+.header:after{
+    content: '';
+    background:linear-gradient(#00000052, #000000ce);
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 0px
+}
+.header h3{
+    position: absolute;
+    bottom: 20px;
+    z-index: 3;
+    left: 40px;
+}
+.sideBar{
+    border-left: 2px solid #1d1d1d
+}
+ul{
+    list-style: none;
+}
+.developers{
+    font-size: 0.8em;
+    background: rgb(44, 44, 44);
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+.developers img{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin-right:9px;
+    margin-top: -3px;
+}
