@@ -7,7 +7,7 @@ import "./App.css"
 
 import Navigation from "./components/Navigation";
 import Sidebar from "./components/Sidebar";
-import Home from "./components/Home";
+import Game from "./components/games";
 import Profile from "./components/Profile";
 import NotFound from "./components/Notfound";
 
@@ -22,7 +22,7 @@ class App extends Component {
               <Sidebar></Sidebar>
               <div id="content">
                 <Switch>
-                  <Route path="/" component={Home} exact />
+                  <Route path="/" component={Game} exact />
                   <Route path="/profile" component = {Profile} />
                   <Route component = {NotFound} />
                 </Switch>
