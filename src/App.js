@@ -12,6 +12,15 @@ import Profile from "./components/Profile";
 import NotFound from "./components/Notfound";
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      gameFetched :'false',
+    }
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -33,6 +42,8 @@ class App extends Component {
       </div>
     );
   }
+
+
 }
 
 export default App;
